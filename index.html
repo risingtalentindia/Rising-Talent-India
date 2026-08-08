@@ -262,32 +262,442 @@
     </section>
 
 
-    <!-- ================= REGISTER CTA ================= -->
+<!-- ================= REGISTRATION SECTION ================= -->
 
-    <section id="register" class="register-section">
+<section id="register" class="registration-section">
 
-        <div class="register-content">
+    <div class="registration-container">
+
+        <div class="registration-header">
 
             <span class="section-label">
-                READY TO SHINE?
+                REGISTRATION
             </span>
 
             <h2>
-                Your Talent Deserves to Be Seen.
+                Register Your Talent
             </h2>
 
             <p>
-                Don't hide your talent.
-                Take the first step towards your journey today.
+                Take the first step towards your Rising Talent India journey.
+                Fill in the details carefully and submit your registration.
             </p>
-
-            <a href="#" class="btn register-btn">
-                Register Your Talent
-            </a>
 
         </div>
 
-    </section>
+
+        <!-- REGISTRATION FORM -->
+
+        <form id="registrationForm" class="registration-form">
+
+            <!-- PERSONAL INFORMATION -->
+
+            <div class="form-section">
+
+                <h3>👤 Personal Information</h3>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="fullName">
+                            Full Name <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            name="fullName"
+                            placeholder="Enter your full name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="age">
+                            Age <span>*</span>
+                        </label>
+
+                        <input
+                            type="number"
+                            id="age"
+                            name="age"
+                            placeholder="Enter your age"
+                            min="5"
+                            max="100"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="mobile">
+                            Mobile Number <span>*</span>
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="mobile"
+                            name="mobile"
+                            placeholder="Enter mobile number"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter email address"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- LOCATION -->
+
+            <div class="form-section">
+
+                <h3>📍 Location</h3>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="state">
+                            State <span>*</span>
+                        </label>
+
+                        <select
+                            id="state"
+                            name="state"
+                            required
+                        >
+
+                            <option value="">
+                                Select State
+                            </option>
+
+                            <option value="Andhra Pradesh">
+                                Andhra Pradesh
+                            </option>
+
+                            <option value="Assam">
+                                Assam
+                            </option>
+
+                            <option value="Bihar">
+                                Bihar
+                            </option>
+
+                            <option value="Delhi">
+                                Delhi
+                            </option>
+
+                            <option value="Gujarat">
+                                Gujarat
+                            </option>
+
+                            <option value="Haryana">
+                                Haryana
+                            </option>
+
+                            <option value="Jharkhand">
+                                Jharkhand
+                            </option>
+
+                            <option value="Karnataka">
+                                Karnataka
+                            </option>
+
+                            <option value="Kerala">
+                                Kerala
+                            </option>
+
+                            <option value="Madhya Pradesh">
+                                Madhya Pradesh
+                            </option>
+
+                            <option value="Maharashtra">
+                                Maharashtra
+                            </option>
+
+                            <option value="Odisha">
+                                Odisha
+                            </option>
+
+                            <option value="Punjab">
+                                Punjab
+                            </option>
+
+                            <option value="Rajasthan">
+                                Rajasthan
+                            </option>
+
+                            <option value="Tamil Nadu">
+                                Tamil Nadu
+                            </option>
+
+                            <option value="Telangana">
+                                Telangana
+                            </option>
+
+                            <option value="Uttar Pradesh">
+                                Uttar Pradesh
+                            </option>
+
+                            <option value="Uttarakhand">
+                                Uttarakhand
+                            </option>
+
+                            <option value="West Bengal">
+                                West Bengal
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="city">
+                            City / District <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="city"
+                            name="city"
+                            placeholder="Enter city or district"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TALENT INFORMATION -->
+
+            <div class="form-section">
+
+                <h3>🌟 Talent Information</h3>
+
+                <div class="form-group">
+
+                    <label for="talentCategory">
+                        Select Your Talent <span>*</span>
+                    </label>
+
+                    <select
+                        id="talentCategory"
+                        name="talentCategory"
+                        required
+                    >
+
+                        <option value="">
+                            Select Talent Category
+                        </option>
+
+                        <option value="Singing">
+                            🎤 Singing
+                        </option>
+
+                        <option value="Dancing">
+                            💃 Dancing
+                        </option>
+
+                        <option value="Acting">
+                            🎭 Acting
+                        </option>
+
+                        <option value="Drawing">
+                            🎨 Drawing
+                        </option>
+
+                        <option value="Others">
+                            ✨ Others
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="talentDescription">
+                        Tell Us About Your Talent <span>*</span>
+                    </label>
+
+                    <textarea
+                        id="talentDescription"
+                        name="talentDescription"
+                        rows="5"
+                        placeholder="Write a short description about your talent..."
+                        required
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <!-- SOCIAL / PORTFOLIO -->
+
+            <div class="form-section">
+
+                <h3>🔗 Social / Portfolio</h3>
+
+                <div class="form-group">
+
+                    <label for="socialLink">
+                        YouTube / Instagram / Portfolio Link
+                    </label>
+
+                    <input
+                        type="url"
+                        id="socialLink"
+                        name="socialLink"
+                        placeholder="https://..."
+                    >
+
+                    <small>
+                        Optional — provide a link if you already have
+                        a video or portfolio online.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- SUBMISSION -->
+
+            <div class="form-section">
+
+                <h3>📤 Talent Submission</h3>
+
+                <div class="form-group">
+
+                    <label for="photo">
+                        Participant Photo <span>*</span>
+                    </label>
+
+                    <input
+                        type="file"
+                        id="photo"
+                        name="photo"
+                        accept="image/*"
+                        required
+                    >
+
+                    <small>
+                        Upload a clear recent photograph.
+                    </small>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="video">
+                        Performance Video
+                    </label>
+
+                    <input
+                        type="file"
+                        id="video"
+                        name="video"
+                        accept="video/*"
+                    >
+
+                    <small>
+                        Upload your talent/performance video.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- DECLARATION -->
+
+            <div class="form-section declaration-section">
+
+                <h3>✅ Participant Declaration</h3>
+
+                <label class="checkbox-label">
+
+                    <input
+                        type="checkbox"
+                        id="declaration"
+                        name="declaration"
+                        required
+                    >
+
+                    <span>
+                        I confirm that the information provided by me
+                        is true and correct. I agree to follow the
+                        rules and guidelines of Rising Talent India.
+                    </span>
+
+                </label>
+
+            </div>
+
+
+            <!-- SUBMIT -->
+
+            <div class="form-submit">
+
+                <button
+                    type="submit"
+                    class="submit-btn"
+                >
+                    🚀 Submit Registration
+                </button>
+
+                <p>
+                    Your information will be handled according to
+                    the platform's registration and privacy policies.
+                </p>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
 
 
     <!-- ================= MANAGEMENT ================= -->
