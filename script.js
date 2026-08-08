@@ -1,58 +1,107 @@
 // ==========================================
-// Rising Talent India - Website JavaScript
+// Rising Talent India - Main JavaScript
 // ==========================================
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    // Register Now Button
-    const registerButtons = document.querySelectorAll(".btn");
+    // ------------------------------------------
+    // Smooth scrolling
+    // ------------------------------------------
 
-    registerButtons.forEach(function (button) {
+    const links = document.querySelectorAll('a[href^="#"]');
 
-        const text = button.textContent.trim().toLowerCase();
+    links.forEach(function (link) {
 
-        if (text.includes("register")) {
-            button.addEventListener("click", function (event) {
-                event.preventDefault();
+        link.addEventListener("click", function (event) {
 
-                alert(
-                    "Welcome to Rising Talent India!\n\n" +
-                    "Registration section will be available soon."
-                );
-            });
-        }
+            const targetId = this.getAttribute("href");
 
-        // Learn More Button
-        if (text.includes("learn")) {
-            button.addEventListener("click", function (event) {
-                event.preventDefault();
+            if (targetId && targetId !== "#") {
 
-                alert(
-                    "Rising Talent India\n\n" +
-                    "India's Digital Talent Platform\n" +
-                    "Discover • Perform • Shine"
-                );
-            });
-        }
-    });
+                const target = document.querySelector(targetId);
 
-    // Talent Category Click
-    const categories = document.querySelectorAll(".categories span");
+                if (target) {
 
-    categories.forEach(function (category) {
+                    event.preventDefault();
 
-        category.addEventListener("click", function () {
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
 
-            const talentName = this.textContent.trim();
+                }
 
-            alert(
-                talentName +
-                " category selected!\n\n" +
-                "Talent registration for this category will be available soon."
-            );
+            }
 
         });
 
     });
+
+
+    // ------------------------------------------
+    // Register buttons
+    // ------------------------------------------
+
+    const registerButtons =
+        document.querySelectorAll(
+            '.btn[href="#register"], .register-btn'
+        );
+
+    registerButtons.forEach(function (button) {
+
+        button.addEventListener("click", function () {
+
+            const registerSection =
+                document.getElementById("register");
+
+            if (registerSection) {
+
+                registerSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }
+
+        });
+
+    });
+
+
+    // ------------------------------------------
+    // Talent category interaction
+    // ------------------------------------------
+
+    const talentCards =
+        document.querySelectorAll(".talent-card");
+
+    talentCards.forEach(function (card) {
+
+        card.addEventListener("click", function () {
+
+            const talentName =
+                this.querySelector("h3");
+
+            if (talentName) {
+
+                console.log(
+                    "Selected Talent: " +
+                    talentName.textContent
+                );
+
+            }
+
+        });
+
+    });
+
+
+    // ------------------------------------------
+    // Welcome message
+    // ------------------------------------------
+
+    console.log(
+        "Welcome to Rising Talent India 🇮🇳"
+    );
 
 });
