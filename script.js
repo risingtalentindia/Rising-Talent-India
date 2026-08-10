@@ -1,323 +1,607 @@
 // ==========================================
-// Rising Talent India - Main JavaScript
-// Registration + Google Sheet Connection
+// Rising Talent India
+// Registration + Photo + Video Upload
 // ==========================================
 
-document.addEventListener("DOMContentLoaded", function () {
-
-    // ==========================================
-    // GOOGLE APPS SCRIPT WEB APP URL
-    // ==========================================
-
-    const GOOGLE_SCRIPT_URL =
-        "https://script.google.com/macros/s/AKfycbxL9crE-2T7KRcVxSiC8_vCjykrUWGJsH1K4mqRoJaU09zeC2oYZF2FK9bAnkd7e0_4/exec";
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
 
-    // ==========================================
-    // Smooth Scrolling
-    // ==========================================
+        // ======================================
+        // GOOGLE APPS SCRIPT WEB APP URL
+        // ======================================
 
-    const links = document.querySelectorAll('a[href^="#"]');
+        const WEB_APP_URL =
+            "https://script.google.com/macros/s/AKfycbxL9crE-2T7KRcVxSiC8_vCjykrUWGJsH1K4mqRoJaU09zeC2oYZF2FK9bAnkd7e0_4/exec";
 
-    links.forEach(function (link) {
 
-        link.addEventListener("click", function (event) {
+        // ======================================
+        // SMOOTH SCROLLING
+        // ======================================
 
-            const targetId = this.getAttribute("href");
+        const links =
+            document.querySelectorAll(
+                'a[href^="#"]'
+            );
 
-            if (targetId && targetId !== "#") {
+        links.forEach(
+            function (link) {
 
-                const target = document.querySelector(targetId);
+                link.addEventListener(
+                    "click",
+                    function (event) {
 
-                if (target) {
+                        const targetId =
+                            this.getAttribute(
+                                "href"
+                            );
 
-                    event.preventDefault();
+                        if (
+                            targetId &&
+                            targetId !== "#"
+                        ) {
 
-                    target.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start"
-                    });
+                            const target =
+                                document.querySelector(
+                                    targetId
+                                );
 
-                }
+                            if (target) {
+
+                                event.preventDefault();
+
+                                target.scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "start"
+                                });
+
+                            }
+
+                        }
+
+                    }
+                );
+
             }
-
-        });
-
-    });
-
-
-    // ==========================================
-    // Register Buttons
-    // ==========================================
-
-    const registerButtons =
-        document.querySelectorAll(
-            '.btn[href="#register"], .register-btn'
         );
 
-    registerButtons.forEach(function (button) {
 
-        button.addEventListener("click", function () {
+        // ======================================
+        // REGISTER BUTTONS
+        // ======================================
 
-            const registerSection =
-                document.getElementById("register");
+        const registerButtons =
+            document.querySelectorAll(
+                '.btn[href="#register"], .register-btn'
+            );
 
-            if (registerSection) {
+        registerButtons.forEach(
+            function (button) {
 
-                registerSection.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
+                button.addEventListener(
+                    "click",
+                    function () {
 
-            }
+                        const registerSection =
+                            document.getElementById(
+                                "register"
+                            );
 
-        });
+                        if (registerSection) {
 
-    });
+                            registerSection.scrollIntoView({
+                                behavior: "smooth",
+                                block: "start"
+                            });
 
+                        }
 
-    // ==========================================
-    // Talent Category Interaction
-    // ==========================================
-
-    const talentCards =
-        document.querySelectorAll(".talent-card");
-
-    talentCards.forEach(function (card) {
-
-        card.addEventListener("click", function () {
-
-            const talentName =
-                this.querySelector("h3");
-
-            if (talentName) {
-
-                console.log(
-                    "Selected Talent: " +
-                    talentName.textContent
+                    }
                 );
 
             }
-
-        });
-
-    });
+        );
 
 
-    // ==========================================
-    // REGISTRATION FORM
-    // ==========================================
+        // ======================================
+        // TALENT CARD
+        // ======================================
 
-    const registrationForm =
-        document.getElementById("registrationForm") ||
-        document.getElementById("registerForm");
+        const talentCards =
+            document.querySelectorAll(
+                ".talent-card"
+            );
 
-    if (registrationForm) {
+        talentCards.forEach(
+            function (card) {
 
-        registrationForm.addEventListener("submit", function (event) {
+                card.addEventListener(
+                    "click",
+                    function () {
 
-            event.preventDefault();
+                        const talentName =
+                            this.querySelector(
+                                "h3"
+                            );
 
-            // ------------------------------------------
-            // Submit Button
-            // ------------------------------------------
+                        if (talentName) {
 
-            const submitButton =
-                registrationForm.querySelector(
-                    'button[type="submit"], input[type="submit"]'
+                            console.log(
+                                "Selected Talent: " +
+                                talentName.textContent
+                            );
+
+                        }
+
+                    }
                 );
 
-            const originalButtonText =
-                submitButton
-                    ? submitButton.textContent
-                    : "";
-
-            if (submitButton) {
-
-                submitButton.disabled = true;
-                submitButton.textContent = "Submitting...";
-
             }
+        );
 
 
-            // ------------------------------------------
-            // Collect Form Data
-            // ------------------------------------------
+        // ======================================
+        // REGISTRATION FORM
+        // ======================================
 
-            const formData =
-                new FormData(registrationForm);
-
-            const data = {
-
-                name:
-                    formData.get("name") ||
-                    formData.get("fullName") ||
-                    "",
-
-                age:
-                    formData.get("age") ||
-                    "",
-
-                gender:
-                    formData.get("gender") ||
-                    "",
-
-                mobile:
-                    formData.get("mobile") ||
-                    formData.get("phone") ||
-                    formData.get("mobileNumber") ||
-                    "",
-
-                email:
-                    formData.get("email") ||
-                    "",
-
-                category:
-                    formData.get("category") ||
-                    formData.get("talent") ||
-                    "",
-
-                city:
-                    formData.get("city") ||
-                    "",
-
-                state:
-                    formData.get("state") ||
-                    "",
-
-                videoLink:
-                    formData.get("videoLink") ||
-                    formData.get("video") ||
-                    formData.get("videoURL") ||
-                    ""
-
-            };
+        const form =
+            document.getElementById(
+                "registrationForm"
+            );
 
 
-            // ------------------------------------------
-            // Basic Validation
-            // ------------------------------------------
+        if (!form) {
 
-            if (!data.name) {
+            console.log(
+                "Registration form not found."
+            );
 
-                alert("Please enter your name.");
+            return;
 
-                resetButton();
-
-                return;
-
-            }
+        }
 
 
-            if (!data.mobile) {
+        // ======================================
+        // FORM SUBMIT
+        // ======================================
 
-                alert("Please enter your mobile number.");
+        form.addEventListener(
+            "submit",
+            async function (event) {
 
-                resetButton();
-
-                return;
-
-            }
-
-
-            if (!data.category) {
-
-                alert("Please select your talent category.");
-
-                resetButton();
-
-                return;
-
-            }
+                event.preventDefault();
 
 
-            // ------------------------------------------
-            // Send Data to Google Sheet
-            // ------------------------------------------
+                // --------------------------------
+                // Submit Button
+                // --------------------------------
 
-            fetch(GOOGLE_SCRIPT_URL, {
-
-                method: "POST",
-
-                mode: "no-cors",
-
-                headers: {
-                    "Content-Type":
-                        "text/plain;charset=utf-8"
-                },
-
-                body: JSON.stringify(data)
-
-            })
-
-            .then(function () {
-
-                // --------------------------------------
-                // Registration Successful
-                // --------------------------------------
-
-                alert(
-                    "🎉 Registration Successful!\n\n" +
-                    "Thank you for registering with Rising Talent India 🇮🇳"
-                );
-
-                registrationForm.reset();
-
-                resetButton();
-
-            })
-
-            .catch(function (error) {
-
-                console.error(
-                    "Registration Error:",
-                    error
-                );
-
-                alert(
-                    "❌ Registration failed.\n\n" +
-                    "Please try again later."
-                );
-
-                resetButton();
-
-            });
+                const submitButton =
+                    form.querySelector(
+                        ".submit-btn"
+                    );
 
 
-            // ------------------------------------------
-            // Reset Submit Button
-            // ------------------------------------------
+                const originalButtonText =
+                    submitButton.innerHTML;
 
-            function resetButton() {
 
-                if (submitButton) {
+                submitButton.disabled =
+                    true;
 
-                    submitButton.disabled = false;
+                submitButton.innerHTML =
+                    "⏳ Uploading... Please wait";
 
-                    submitButton.textContent =
-                        originalButtonText || "Register Now";
+
+                try {
+
+
+                    // ==============================
+                    // GET FORM VALUES
+                    // ==============================
+
+                    const name =
+                        document.getElementById(
+                            "fullName"
+                        ).value.trim();
+
+
+                    const age =
+                        document.getElementById(
+                            "age"
+                        ).value;
+
+
+                    const genderElement =
+                        document.getElementById(
+                            "gender"
+                        );
+
+                    const gender =
+                        genderElement
+                            ? genderElement.value
+                            : "";
+
+
+                    const mobile =
+                        document.getElementById(
+                            "mobile"
+                        ).value.trim();
+
+
+                    const email =
+                        document.getElementById(
+                            "email"
+                        ).value.trim();
+
+
+                    const state =
+                        document.getElementById(
+                            "state"
+                        ).value;
+
+
+                    const city =
+                        document.getElementById(
+                            "city"
+                        ).value.trim();
+
+
+                    const category =
+                        document.getElementById(
+                            "talentCategory"
+                        ).value;
+
+
+                    const talentDescription =
+                        document.getElementById(
+                            "talentDescription"
+                        ).value.trim();
+
+
+                    const socialLink =
+                        document.getElementById(
+                            "socialLink"
+                        ).value.trim();
+
+
+                    const photoInput =
+                        document.getElementById(
+                            "photo"
+                        );
+
+
+                    const videoInput =
+                        document.getElementById(
+                            "video"
+                        );
+
+
+                    // ==============================
+                    // PHOTO CHECK
+                    // ==============================
+
+                    if (
+                        !photoInput.files ||
+                        !photoInput.files[0]
+                    ) {
+
+                        alert(
+                            "Please upload your photo."
+                        );
+
+                        submitButton.disabled =
+                            false;
+
+                        submitButton.innerHTML =
+                            originalButtonText;
+
+                        return;
+
+                    }
+
+
+                    // ==============================
+                    // FILE SIZE CHECK
+                    // ==============================
+
+                    const photoFile =
+                        photoInput.files[0];
+
+
+                    const videoFile =
+                        videoInput.files &&
+                        videoInput.files[0]
+                            ? videoInput.files[0]
+                            : null;
+
+
+                    // Photo maximum: 5 MB
+                    if (
+                        photoFile.size >
+                        5 * 1024 * 1024
+                    ) {
+
+                        alert(
+                            "Photo size must be less than 5 MB."
+                        );
+
+                        submitButton.disabled =
+                            false;
+
+                        submitButton.innerHTML =
+                            originalButtonText;
+
+                        return;
+
+                    }
+
+
+                    // Video maximum: 20 MB
+                    if (
+                        videoFile &&
+                        videoFile.size >
+                        20 * 1024 * 1024
+                    ) {
+
+                        alert(
+                            "Video size must be less than 20 MB."
+                        );
+
+                        submitButton.disabled =
+                            false;
+
+                        submitButton.innerHTML =
+                            originalButtonText;
+
+                        return;
+
+                    }
+
+
+                    // ==============================
+                    // READ PHOTO
+                    // ==============================
+
+                    const photoData =
+                        await fileToBase64(
+                            photoFile
+                        );
+
+
+                    // ==============================
+                    // READ VIDEO
+                    // ==============================
+
+                    let videoData = "";
+
+                    if (videoFile) {
+
+                        videoData =
+                            await fileToBase64(
+                                videoFile
+                            );
+
+                    }
+
+
+                    // ==============================
+                    // CREATE DATA
+                    // ==============================
+
+                    const registrationData = {
+
+                        name:
+                            name,
+
+                        age:
+                            age,
+
+                        gender:
+                            gender,
+
+                        mobile:
+                            mobile,
+
+                        email:
+                            email,
+
+                        category:
+                            category,
+
+                        city:
+                            city,
+
+                        state:
+                            state,
+
+                        talentDescription:
+                            talentDescription,
+
+                        socialLink:
+                            socialLink,
+
+                        photoData:
+                            photoData,
+
+                        photoType:
+                            photoFile.type,
+
+                        videoData:
+                            videoData,
+
+                        videoType:
+                            videoFile
+                                ? videoFile.type
+                                : ""
+
+                    };
+
+
+                    // ==============================
+                    // SEND TO APPS SCRIPT
+                    // ==============================
+
+                    const response =
+                        await fetch(
+                            WEB_APP_URL,
+                            {
+
+                                method:
+                                    "POST",
+
+                                headers: {
+
+                                    "Content-Type":
+                                        "text/plain;charset=utf-8"
+
+                                },
+
+                                body:
+                                    JSON.stringify(
+                                        registrationData
+                                    )
+
+                            }
+                        );
+
+
+                    const result =
+                        await response.json();
+
+
+                    // ==============================
+                    // SUCCESS
+                    // ==============================
+
+                    if (
+                        result.success
+                    ) {
+
+                        form.reset();
+
+
+                        submitButton.innerHTML =
+                            "✅ Registration Successful";
+
+
+                        alert(
+                            "🎉 Registration Successful!\n\n" +
+                            "Your Registration ID is:\n" +
+                            result.registrationId
+                        );
+
+
+                        // Restore button
+                        setTimeout(
+                            function () {
+
+                                submitButton.disabled =
+                                    false;
+
+                                submitButton.innerHTML =
+                                    originalButtonText;
+
+                            },
+                            3000
+                        );
+
+
+                    } else {
+
+                        throw new Error(
+                            result.error ||
+                            "Registration failed."
+                        );
+
+                    }
+
+
+                } catch (error) {
+
+                    console.error(
+                        "Registration Error:",
+                        error
+                    );
+
+
+                    alert(
+                        "❌ Registration failed.\n\n" +
+                        "Please try again.\n\n" +
+                        "Error: " +
+                        error.message
+                    );
+
+
+                    submitButton.disabled =
+                        false;
+
+
+                    submitButton.innerHTML =
+                        originalButtonText;
 
                 }
 
             }
+        );
 
-        });
 
-    } else {
+        // ======================================
+        // FILE → BASE64
+        // ======================================
+
+        function fileToBase64(file) {
+
+            return new Promise(
+                function (
+                    resolve,
+                    reject
+                ) {
+
+                    const reader =
+                        new FileReader();
+
+
+                    reader.onload =
+                        function () {
+
+                            resolve(
+                                reader.result
+                            );
+
+                        };
+
+
+                    reader.onerror =
+                        function () {
+
+                            reject(
+                                new Error(
+                                    "Could not read file."
+                                )
+                            );
+
+                        };
+
+
+                    reader.readAsDataURL(
+                        file
+                    );
+
+                }
+            );
+
+        }
+
+
+        // ======================================
+        // WELCOME
+        // ======================================
 
         console.log(
-            "Registration form not found."
+            "Welcome to Rising Talent India 🇮🇳"
         );
 
     }
-
-
-    // ==========================================
-    // Welcome Message
-    // ==========================================
-
-    console.log(
-        "🇮🇳 Welcome to Rising Talent India"
-    );
-
-});
+);
