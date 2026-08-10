@@ -398,3 +398,273 @@ body {
         padding: 18px 10px;
     }
 }
+/* ==========================================
+   REGISTRATION FORM
+========================================== */
+
+.registration-section {
+    padding: 90px 20px;
+    background: #f5f7fb;
+    color: #071952;
+}
+
+.registration-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.registration-header {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.registration-header h2 {
+    font-size: 42px;
+    margin: 15px 0;
+    color: #071952;
+}
+
+.registration-header p {
+    max-width: 700px;
+    margin: 0 auto;
+    color: #555;
+    line-height: 1.7;
+}
+
+
+/* FORM BOX */
+
+.registration-form {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+
+/* FORM SECTION */
+
+.form-section {
+    padding: 25px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.form-section:last-child {
+    border-bottom: none;
+}
+
+.form-section h3 {
+    font-size: 22px;
+    margin-bottom: 25px;
+    color: #071952;
+}
+
+
+/* FORM ROW */
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+
+/* FORM GROUP */
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #263238;
+}
+
+.form-group label span {
+    color: #e53935;
+}
+
+
+/* INPUTS */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 15px;
+
+    border: 1px solid #d7dce5;
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-family: inherit;
+
+    background: #ffffff;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #087fce;
+
+    box-shadow:
+        0 0 0 3px rgba(8, 127, 206, 0.12);
+}
+
+
+/* FILE INPUT */
+
+.form-group input[type="file"] {
+    padding: 12px;
+    background: #f8fafc;
+    cursor: pointer;
+}
+
+
+/* SMALL TEXT */
+
+.form-group small {
+    display: block;
+    margin-top: 7px;
+
+    color: #777;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* DECLARATION */
+
+.declaration-section {
+    background: #f8fafc;
+    padding: 25px;
+    border-radius: 12px;
+    margin-top: 25px;
+}
+
+.checkbox-label {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+
+    cursor: pointer;
+
+    color: #444;
+    line-height: 1.6;
+}
+
+.checkbox-label input {
+    width: 18px;
+    height: 18px;
+
+    margin-top: 3px;
+
+    accent-color: #087fce;
+}
+
+
+/* SUBMIT */
+
+.form-submit {
+    text-align: center;
+    padding-top: 35px;
+}
+
+.submit-btn {
+    border: none;
+
+    padding: 16px 38px;
+
+    border-radius: 50px;
+
+    background: linear-gradient(
+        135deg,
+        #ff7043,
+        #ff5722
+    );
+
+    color: #ffffff;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(255, 87, 34, 0.3);
+}
+
+.form-submit p {
+    margin-top: 15px;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   MOBILE REGISTRATION FORM
+========================================== */
+
+@media (max-width: 768px) {
+
+    .registration-section {
+        padding: 65px 15px;
+    }
+
+    .registration-header h2 {
+        font-size: 32px;
+    }
+
+    .registration-form {
+        padding: 25px 20px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .form-section h3 {
+        font-size: 20px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .registration-header h2 {
+        font-size: 28px;
+    }
+
+    .registration-header p {
+        font-size: 15px;
+    }
+
+    .registration-form {
+        padding: 20px 15px;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 15px 20px;
+    }
+}
