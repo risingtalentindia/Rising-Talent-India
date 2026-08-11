@@ -2044,3 +2044,37 @@ a {
     }
 
 }
+/* ================= BANNER FIX ================= */
+
+.hero-banner {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-banner img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .hero-banner {
+        width: 100%;
+    }
+
+    .hero-banner img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+}
