@@ -805,3 +805,194 @@ a {
     }
 
 }
+/* ================= TALENT CATEGORIES ================= */
+
+.talent-section {
+    padding: 100px 20px;
+
+    background: #0a0a0a;
+
+    color: #ffffff;
+}
+
+.section-subtitle {
+    max-width: 650px;
+
+    margin: 15px auto 0;
+
+    color: #aaaaaa;
+
+    line-height: 1.7;
+
+    font-size: 15px;
+}
+
+.talent-grid {
+    max-width: 1100px;
+
+    margin: 50px auto 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.talent-card {
+    position: relative;
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #181818,
+            #090909
+        );
+
+    border: 1px solid
+        rgba(255, 215, 0, 0.22);
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    transition: 0.4s;
+}
+
+.talent-card::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: 0;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 0;
+    height: 3px;
+
+    background: linear-gradient(
+        90deg,
+        #ffd700,
+        #ff9800
+    );
+
+    transition: 0.4s;
+}
+
+.talent-card:hover {
+    transform: translateY(-8px);
+
+    border-color: #ffd700;
+
+    box-shadow:
+        0 15px 40px
+        rgba(255, 215, 0, 0.12);
+}
+
+.talent-card:hover::after {
+    width: 80%;
+}
+
+.talent-icon {
+    width: 75px;
+    height: 75px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 215, 0, 0.08);
+
+    border: 1px solid
+        rgba(255, 215, 0, 0.35);
+
+    font-size: 34px;
+}
+
+.talent-card h3 {
+    color: #ffd700;
+
+    font-size: 22px;
+
+    margin-bottom: 15px;
+}
+
+.talent-card p {
+    color: #bbbbbb;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    min-height: 72px;
+
+    margin-bottom: 22px;
+}
+
+.talent-btn {
+    display: inline-block;
+
+    padding: 9px 20px;
+
+    border-radius: 25px;
+
+    border: 1px solid #ffd700;
+
+    color: #ffd700;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.talent-btn:hover {
+    background: #ffd700;
+
+    color: #000;
+
+    transform: scale(1.05);
+}
+
+
+/* TABLET */
+
+@media (max-width: 900px) {
+
+    .talent-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .talent-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .talent-card p {
+        min-height: auto;
+    }
+
+}
