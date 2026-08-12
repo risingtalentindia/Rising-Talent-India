@@ -2078,3 +2078,110 @@ a {
         object-fit: contain;
     }
 }
+/* ================= WHY RISING TALENT INDIA ================= */
+
+.why-section {
+    padding: 90px 20px;
+    background: #f8fafc;
+}
+
+.why-section .section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.why-section .section-label {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.why-section h2 {
+    font-size: 42px;
+    margin: 0 0 18px;
+    line-height: 1.2;
+}
+
+.why-intro {
+    max-width: 700px;
+    margin: 0 auto 45px;
+    font-size: 17px;
+    line-height: 1.7;
+    color: #555;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.why-card {
+    background: #ffffff;
+    padding: 32px 24px;
+    border-radius: 18px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.why-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.why-icon {
+    font-size: 42px;
+    margin-bottom: 18px;
+}
+
+.why-card h3 {
+    font-size: 21px;
+    margin: 0 0 12px;
+}
+
+.why-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #666;
+    margin: 0;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 900px) {
+
+    .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .why-section h2 {
+        font-size: 34px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .why-section {
+        padding: 65px 16px;
+    }
+
+    .why-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .why-section h2 {
+        font-size: 30px;
+    }
+
+    .why-intro {
+        font-size: 16px;
+    }
+
+}
