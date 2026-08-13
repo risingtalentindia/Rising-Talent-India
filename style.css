@@ -2185,3 +2185,187 @@ a {
     }
 
 }
+/* ================= UNIQUE ACADEMY ================= */
+
+.unique-academy-section {
+    padding: 90px 7%;
+    background: linear-gradient(135deg, #fff8e8, #ffffff);
+    text-align: center;
+}
+
+.unique-academy-content {
+    max-width: 900px;
+    margin: auto;
+}
+
+.unique-academy-badge {
+    display: inline-block;
+    color: #c27a00;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.unique-academy-content h2 {
+    font-size: 46px;
+    margin-bottom: 10px;
+}
+
+.unique-academy-content h3 {
+    font-size: 24px;
+    margin-bottom: 18px;
+}
+
+.unique-academy-content p {
+    max-width: 750px;
+    margin: auto;
+    color: #666;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.unique-academy-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.academy-btn {
+    display: inline-block;
+    padding: 13px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.academy-btn.primary {
+    background: #e63946;
+    color: white;
+}
+
+.academy-btn.secondary {
+    background: #f5b942;
+    color: #111;
+}
+
+
+/* COURSES */
+
+.academy-courses {
+    max-width: 1200px;
+    margin: 70px auto 0;
+}
+
+.academy-courses h3 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.academy-course-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-top: 35px;
+}
+
+.academy-course-card {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.academy-course-card:hover {
+    transform: translateY(-5px);
+}
+
+.course-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.academy-course-card h4 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.academy-course-card p {
+    font-size: 14px;
+    color: #666;
+}
+
+
+/* STUDENT LOGIN */
+
+.academy-student-box {
+    max-width: 850px;
+    margin: 70px auto 0;
+    padding: 45px 25px;
+    background: #111827;
+    color: white;
+    border-radius: 20px;
+}
+
+.academy-student-box h3 {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.academy-student-box p {
+    color: #ddd;
+    max-width: 700px;
+    margin: auto;
+}
+
+.student-login-btn {
+    display: inline-block;
+    margin-top: 22px;
+    padding: 12px 28px;
+    background: #f5b942;
+    color: #111;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 700;
+}
+
+
+/* CONTACT */
+
+.academy-contact {
+    margin-top: 60px;
+}
+
+.academy-contact h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.academy-contact-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: #e63946;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 700;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .unique-academy-content h2 {
+        font-size: 36px;
+    }
+
+    .academy-course-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
