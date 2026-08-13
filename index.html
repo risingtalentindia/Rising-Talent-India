@@ -374,11 +374,20 @@
 
 <div class="academy-course-grid">
 
-    <div class="academy-course-card">
-        <div class="course-icon">💻</div>
-        <h4>CCA</h4>
-        <p>Certificate in Computer Application</p>
-    </div>
+<div class="academy-course-card">
+    <div class="course-icon">💻</div>
+    <h4>CCA</h4>
+    <p>Certificate in Computer Application</p>
+
+    <button class="course-details-btn"
+        onclick="showCourseDetails(
+        'CCA',
+        'Certificate in Computer Application',
+        'Computer fundamentals, operating system, MS Office, internet and essential digital skills.'
+        )">
+        View Details
+    </button>
+</div>
 
     <div class="academy-course-card">
         <div class="course-icon">🖥️</div>
@@ -551,7 +560,87 @@
 
     </div>
 
+<!-- ================= COURSE DETAILS POPUP ================= -->
 
+<div id="courseModal" class="course-modal">
+
+    <div class="course-modal-content">
+
+        <button class="course-modal-close"
+            onclick="closeCourseDetails()">
+            ×
+        </button>
+
+        <div class="course-modal-icon">
+            📚
+        </div>
+
+        <h2 id="courseModalTitle">
+            Course Name
+        </h2>
+
+        <h4 id="courseModalSubtitle">
+            Course Details
+        </h4>
+
+        <p id="courseModalDescription">
+            Course information will appear here.
+        </p>
+
+        <div class="course-modal-buttons">
+
+            <a href="#" class="course-admission-btn">
+                📝 Apply Now
+            </a>
+
+            <button onclick="closeCourseDetails()"
+                class="course-close-btn">
+                Close
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= COURSE DETAILS SCRIPT ================= -->
+
+<script>
+
+function showCourseDetails(title, subtitle, description) {
+
+    document.getElementById("courseModalTitle").innerText = title;
+
+    document.getElementById("courseModalSubtitle").innerText = subtitle;
+
+    document.getElementById("courseModalDescription").innerText = description;
+
+    document.getElementById("courseModal").style.display = "flex";
+}
+
+
+function closeCourseDetails() {
+
+    document.getElementById("courseModal").style.display = "none";
+
+}
+
+
+window.onclick = function(event) {
+
+    const modal = document.getElementById("courseModal");
+
+    if (event.target === modal) {
+
+        closeCourseDetails();
+
+    }
+
+}
+
+</script>
     <!-- CONTACT -->
 
     <div class="academy-contact">
