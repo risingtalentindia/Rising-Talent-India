@@ -2369,3 +2369,58 @@ a {
     }
 
 }
+/* ================================
+   UNIQUE ACADEMY - COURSE LAYOUT FIX
+   ================================ */
+
+.academy-course-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin-top: 35px;
+}
+
+/* Student Dashboard নিচে থাকবে */
+.academy-student-box {
+    width: 100%;
+    max-width: 900px;
+    margin: 70px auto 0;
+    clear: both;
+}
+
+/* Contact information-ও Dashboard-এর নিচে */
+.academy-contact {
+    width: 100%;
+    clear: both;
+    margin-top: 60px;
+}
+
+/* Course Card */
+.academy-course-card {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+    .academy-course-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .academy-course-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .academy-course-grid {
+        grid-template-columns: 1fr;
+    }
+}
