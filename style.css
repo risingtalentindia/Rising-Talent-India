@@ -2654,3 +2654,80 @@ a {
 
     font-weight: 600;
 }
+/* ================= WHY RISING TALENT ================= */
+
+.why-rising {
+    padding: 80px 6%;
+    text-align: center;
+    background: #f8f9fc;
+}
+
+.why-rising h2 {
+    font-size: 38px;
+    margin-bottom: 12px;
+    color: #222;
+}
+
+.why-subtitle {
+    max-width: 750px;
+    margin: 0 auto 45px;
+    font-size: 17px;
+    color: #666;
+    line-height: 1.7;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.why-card {
+    background: #ffffff;
+    padding: 35px 25px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+}
+
+.why-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.14);
+}
+
+.why-icon {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.why-card h3 {
+    font-size: 21px;
+    margin-bottom: 12px;
+    color: #222;
+}
+
+.why-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #666;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+    .why-rising {
+        padding: 55px 20px;
+    }
+
+    .why-rising h2 {
+        font-size: 30px;
+    }
+
+    .why-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
