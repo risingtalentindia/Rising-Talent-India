@@ -3011,3 +3011,188 @@ a {
     }
 
 }
+/* ================= RTI TALENT SECTION ================= */
+
+.rti-talent-section {
+    padding: 90px 7%;
+    background: #f8f8fa;
+}
+
+.rti-talent-container {
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+}
+
+.rti-talent-section .rti-section-label {
+    display: inline-block;
+    margin-bottom: 12px;
+
+    color: #b52b3d;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+}
+
+.rti-talent-section h2 {
+    margin: 0 0 18px;
+
+    font-size: 44px;
+    line-height: 1.2;
+
+    color: #202020;
+}
+
+.rti-talent-section h2 span {
+    color: #b52b3d;
+}
+
+.rti-talent-intro {
+    max-width: 700px;
+    margin: 0 auto 50px;
+
+    font-size: 17px;
+    line-height: 1.8;
+
+    color: #666;
+}
+
+
+/* TALENT GRID */
+
+.rti-talent-grid {
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 20px;
+}
+
+
+/* TALENT CARD */
+
+.rti-talent-card {
+    padding: 35px 20px;
+
+    background: #ffffff;
+
+    border-radius: 20px;
+
+    border: 1px solid #eeeeee;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+
+    transition: 0.3s;
+}
+
+.rti-talent-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow: 0 18px 35px rgba(0,0,0,0.12);
+}
+
+
+/* ICON */
+
+.rti-talent-icon {
+    width: 75px;
+    height: 75px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #fff1f3;
+
+    font-size: 38px;
+}
+
+
+/* TITLE */
+
+.rti-talent-card h3 {
+    margin: 0 0 12px;
+
+    font-size: 20px;
+
+    color: #222;
+}
+
+
+/* DESCRIPTION */
+
+.rti-talent-card p {
+    min-height: 70px;
+
+    margin: 0 0 20px;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    color: #777;
+}
+
+
+/* BUTTON */
+
+.rti-talent-card a {
+    display: inline-block;
+
+    padding: 9px 16px;
+
+    border-radius: 25px;
+
+    background: #b52b3d;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.rti-talent-card a:hover {
+    background: #e5a928;
+
+    color: #222;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 1000px) {
+
+    .rti-talent-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .rti-talent-section {
+        padding: 60px 20px;
+    }
+
+    .rti-talent-section h2 {
+        font-size: 34px;
+    }
+
+    .rti-talent-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
