@@ -180,10 +180,10 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
-            const submitButton =
-                registrationForm.querySelector(
-                    ".submit-btn"
-                );
+const submitButton =
+    registrationForm.querySelector(
+        'button[type="submit"]'
+    );
 
 
             if (!submitButton) {
