@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(
         "Welcome to Rising Talent India 🇮🇳"
     );
-
+console.log("REGISTRATION SCRIPT LOADED");
 
     // ==========================================
     // REGISTRATION FORM SUBMISSION
