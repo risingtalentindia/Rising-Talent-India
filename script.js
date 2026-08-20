@@ -316,39 +316,27 @@ const submitButton =
 
                 const data = {
 
-                    fullName:
-                        fullName.value.trim(),
+    fullName: formData.get("fullName") || "",
 
-                    age:
-                        age.value,
+    age: formData.get("age") || "",
 
-                    gender:
-                        gender.value,
+    gender: formData.get("gender") || "",
 
-                    mobile:
-                        mobile.value.trim(),
+    mobile: formData.get("mobile") || "",
 
-                    email:
-                        email.value.trim(),
+    email: formData.get("email") || "",
 
-                    state:
-                        state.value,
+    state: formData.get("state") || "",
 
-                    city:
-                        city.value.trim(),
+    city: formData.get("city") || "",
 
-                    talentCategory:
-                        talentCategory.value,
+    talentCategory: formData.get("talentCategory") || "",
 
-                    talentDescription:
-                        talentDescription.value.trim(),
+    talentDescription: formData.get("talentDescription") || "",
 
-                    socialLink:
-                        socialLink
-                            ? socialLink.value.trim()
-                            : ""
+    socialLink: formData.get("socialLink") || ""
 
-                };
+};
 
 
                 console.log(
