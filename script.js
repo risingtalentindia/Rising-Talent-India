@@ -5,7 +5,21 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     console.log("RTI SCRIPT LOADED");
+function fileToBase64(file) {
 
+    return new Promise((resolve, reject) => {
+
+        const reader = new FileReader();
+
+        reader.onload = () => resolve(reader.result);
+
+        reader.onerror = reject;
+
+        reader.readAsDataURL(file);
+
+    });
+
+}
 
     // ==========================================
     // MOBILE MENU
@@ -337,7 +351,19 @@ const submitButton =
     socialLink: formData.get("socialLink") || ""
 
 };
+const photoFile = formData.get("photo");
 
+if (photoFile && photoFile.size > 0) {
+    data.photoName = photoFile.name;
+    data.photoData = await fileToBase64(photoFile);
+}
+
+const videoFile = formData.get("video");
+
+if (videoFile && videoFile.size > 0) {
+    data.videoName = videoFile.name;
+    data.videoData = await fileToBase64(videoFile);
+}
 
                 console.log(
                     "Participant data prepared:",
