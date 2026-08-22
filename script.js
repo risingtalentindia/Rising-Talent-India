@@ -1,25 +1,12 @@
 // ==========================================
 // Rising Talent India - Main JavaScript
+// Registration + Google Sheet + Drive Upload
 // ==========================================
 
 document.addEventListener("DOMContentLoaded", function () {
 
     console.log("RTI SCRIPT LOADED");
-function fileToBase64(file) {
 
-    return new Promise((resolve, reject) => {
-
-        const reader = new FileReader();
-
-        reader.onload = () => resolve(reader.result);
-
-        reader.onerror = reject;
-
-        reader.readAsDataURL(file);
-
-    });
-
-}
 
     // ==========================================
     // MOBILE MENU
@@ -31,64 +18,52 @@ function fileToBase64(file) {
     const mainNav =
         document.getElementById("mainNav");
 
-
     if (menuToggle && mainNav) {
 
-        menuToggle.addEventListener(
-            "click",
-            function () {
+        menuToggle.addEventListener("click", function () {
 
-                mainNav.classList.toggle("active");
+            mainNav.classList.toggle("active");
 
-                if (
-                    mainNav.classList.contains("active")
-                ) {
+            if (mainNav.classList.contains("active")) {
 
-                    menuToggle.innerHTML = "✕";
+                menuToggle.innerHTML = "✕";
 
-                    menuToggle.setAttribute(
-                        "aria-label",
-                        "Close Menu"
-                    );
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Close Menu"
+                );
 
-                } else {
+            } else {
 
-                    menuToggle.innerHTML = "☰";
+                menuToggle.innerHTML = "☰";
 
-                    menuToggle.setAttribute(
-                        "aria-label",
-                        "Open Menu"
-                    );
-
-                }
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open Menu"
+                );
 
             }
-        );
+
+        });
 
 
         const navLinks =
             mainNav.querySelectorAll("a");
 
-
         navLinks.forEach(function (link) {
 
-            link.addEventListener(
-                "click",
-                function () {
+            link.addEventListener("click", function () {
 
-                    mainNav.classList.remove(
-                        "active"
-                    );
+                mainNav.classList.remove("active");
 
-                    menuToggle.innerHTML = "☰";
+                menuToggle.innerHTML = "☰";
 
-                    menuToggle.setAttribute(
-                        "aria-label",
-                        "Open Menu"
-                    );
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open Menu"
+                );
 
-                }
-            );
+            });
 
         });
 
@@ -100,47 +75,34 @@ function fileToBase64(file) {
     // ==========================================
 
     const links =
-        document.querySelectorAll(
-            'a[href^="#"]'
-        );
-
+        document.querySelectorAll('a[href^="#"]');
 
     links.forEach(function (link) {
 
-        link.addEventListener(
-            "click",
-            function (event) {
+        link.addEventListener("click", function (event) {
 
-                const targetId =
-                    this.getAttribute("href");
+            const targetId =
+                this.getAttribute("href");
 
+            if (targetId && targetId !== "#") {
 
-                if (
-                    targetId &&
-                    targetId !== "#"
-                ) {
+                const target =
+                    document.querySelector(targetId);
 
-                    const target =
-                        document.querySelector(
-                            targetId
-                        );
+                if (target) {
 
+                    event.preventDefault();
 
-                    if (target) {
-
-                        event.preventDefault();
-
-                        target.scrollIntoView({
-                            behavior: "smooth",
-                            block: "start"
-                        });
-
-                    }
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
 
                 }
 
             }
-        );
+
+        });
 
     });
 
@@ -150,16 +112,17 @@ function fileToBase64(file) {
     // ==========================================
 
     const registrationForm =
-        document.getElementById(
-            "registrationForm"
-        );
-
+        document.getElementById("registrationForm");
 
     console.log(
         "Registration form found:",
         !!registrationForm
     );
 
+
+    // ==========================================
+    // GOOGLE APPS SCRIPT URL
+    // ==========================================
 
     const APPS_SCRIPT_URL =
         "https://script.google.com/macros/s/AKfycbxL9crE-2T7KRcVxSiC8_vCjykrUWGJsH1K4mqRoJaU09zeC2oYZF2FK9bAnkd7e0_4/exec";
@@ -177,6 +140,40 @@ function fileToBase64(file) {
 
 
     // ==========================================
+    // FILE → BASE64
+    // ==========================================
+
+    function fileToBase64(file) {
+
+        return new Promise(function (resolve, reject) {
+
+            const reader = new FileReader();
+
+            reader.onload = function () {
+
+                resolve(reader.result);
+
+            };
+
+            reader.onerror = function () {
+
+                reject(
+                    new Error(
+                        "Unable to read file: " +
+                        file.name
+                    )
+                );
+
+            };
+
+            reader.readAsDataURL(file);
+
+        });
+
+    }
+
+
+    // ==========================================
     // FORM SUBMIT
     // ==========================================
 
@@ -188,16 +185,19 @@ function fileToBase64(file) {
 
             event.stopPropagation();
 
-
             console.log(
                 "Registration form submitted."
             );
 
 
-const submitButton =
-    registrationForm.querySelector(
-        'button[type="submit"]'
-    );
+            // ==================================
+            // SUBMIT BUTTON
+            // ==================================
+
+            const submitButton =
+                registrationForm.querySelector(
+                    'button[type="submit"], input[type="submit"]'
+                );
 
 
             if (!submitButton) {
@@ -212,7 +212,8 @@ const submitButton =
 
 
             const originalText =
-                submitButton.innerHTML;
+                submitButton.innerHTML ||
+                submitButton.value;
 
 
             try {
@@ -223,99 +224,49 @@ const submitButton =
 
                 submitButton.disabled = true;
 
-                submitButton.innerHTML =
-                    "⏳ Submitting...";
-
-
-                // ==================================
-                // GET FORM ELEMENTS
-                // ==================================
-
-                const fullName =
-                    document.getElementById(
-                        "fullName"
-                    );
-
-                const age =
-                    document.getElementById(
-                        "age"
-                    );
-
-                const gender =
-                    document.getElementById(
-                        "gender"
-                    );
-
-                const mobile =
-                    document.getElementById(
-                        "mobile"
-                    );
-
-                const email =
-                    document.getElementById(
-                        "email"
-                    );
-
-                const state =
-                    document.getElementById(
-                        "state"
-                    );
-
-                const city =
-                    document.getElementById(
-                        "city"
-                    );
-
-                const talentCategory =
-                    document.getElementById(
-                        "talentCategory"
-                    );
-
-                const talentDescription =
-                    document.getElementById(
-                        "talentDescription"
-                    );
-
-                const socialLink =
-                    document.getElementById(
-                        "socialLink"
-                    );
-
-                const photo =
-                    document.getElementById(
-                        "photo"
-                    );
-
-                const video =
-                    document.getElementById(
-                        "video"
-                    );
-
-
-                // ==================================
-                // BASIC VALIDATION
-                // ==================================
-
                 if (
-                    !fullName ||
-                    !age ||
-                    !gender ||
-                    !mobile ||
-                    !state ||
-                    !city ||
-                    !talentCategory ||
-                    !talentDescription ||
-                    !photo
+                    submitButton.tagName === "INPUT"
                 ) {
 
-                    throw new Error(
-                        "Some registration fields are missing."
-                    );
+                    submitButton.value =
+                        "Submitting...";
+
+                } else {
+
+                    submitButton.innerHTML =
+                        "⏳ Submitting...";
 
                 }
 
 
-                if (!photo.files.length) {
+                // ==================================
+                // GET FORM DATA
+                // ==================================
+
+                const formData =
+                    new FormData(registrationForm);
+
+
+                // ==================================
+                // GET FILES
+                // ==================================
+
+                const photoFile =
+                    formData.get("photo");
+
+                const videoFile =
+                    formData.get("video");
+
+
+                // ==================================
+                // PHOTO VALIDATION
+                // ==================================
+
+                if (
+                    !photoFile ||
+                    !(photoFile instanceof File) ||
+                    photoFile.size === 0
+                ) {
 
                     throw new Error(
                         "Please upload your photo."
@@ -330,63 +281,48 @@ const submitButton =
 
                 const data = {
 
-    fullName: formData.get("fullName") || "",
+                    fullName:
+                        formData.get("fullName") || "",
 
-    age: formData.get("age") || "",
+                    age:
+                        formData.get("age") || "",
 
-    gender: formData.get("gender") || "",
+                    gender:
+                        formData.get("gender") || "",
 
-    mobile: formData.get("mobile") || "",
+                    mobile:
+                        formData.get("mobile") || "",
 
-    email: formData.get("email") || "",
+                    email:
+                        formData.get("email") || "",
 
-    state: formData.get("state") || "",
+                    state:
+                        formData.get("state") || "",
 
-    city: formData.get("city") || "",
+                    city:
+                        formData.get("city") || "",
 
-    talentCategory: formData.get("talentCategory") || "",
+                    talentCategory:
+                        formData.get("talentCategory") || "",
 
-    talentDescription: formData.get("talentDescription") || "",
+                    talentDescription:
+                        formData.get("talentDescription") || "",
 
-    socialLink: formData.get("socialLink") || ""
+                    socialLink:
+                        formData.get("socialLink") || ""
 
-};
-const photoFile = formData.get("photo");
-
-if (photoFile && photoFile.size > 0) {
-    data.photoName = photoFile.name;
-    data.photoData = await fileToBase64(photoFile);
-}
-
-const videoFile = formData.get("video");
-
-if (videoFile && videoFile.size > 0) {
-    data.videoName = videoFile.name;
-    data.videoData = await fileToBase64(videoFile);
-}
-
-                console.log(
-                    "Participant data prepared:",
-                    data
-                );
+                };
 
 
                 // ==================================
-                // PHOTO CONVERSION
+                // PHOTO → BASE64
                 // ==================================
-
-                const photoFile =
-                    photo.files[0];
-
 
                 data.photoName =
                     photoFile.name;
 
-
                 data.photoData =
-                    await fileToDataURL(
-                        photoFile
-                    );
+                    await fileToBase64(photoFile);
 
 
                 console.log(
@@ -395,27 +331,20 @@ if (videoFile && videoFile.size > 0) {
 
 
                 // ==================================
-                // VIDEO CONVERSION
+                // VIDEO → BASE64
                 // ==================================
 
                 if (
-                    video &&
-                    video.files.length
+                    videoFile &&
+                    videoFile instanceof File &&
+                    videoFile.size > 0
                 ) {
-
-                    const videoFile =
-                        video.files[0];
-
 
                     data.videoName =
                         videoFile.name;
 
-
                     data.videoData =
-                        await fileToDataURL(
-                            videoFile
-                        );
-
+                        await fileToBase64(videoFile);
 
                     console.log(
                         "Video prepared."
@@ -425,7 +354,17 @@ if (videoFile && videoFile.size > 0) {
 
 
                 // ==================================
-                // SEND DATA TO APPS SCRIPT
+                // DEBUG
+                // ==================================
+
+                console.log(
+                    "Participant data prepared:",
+                    data
+                );
+
+
+                // ==================================
+                // SEND TO GOOGLE APPS SCRIPT
                 // ==================================
 
                 console.log(
@@ -455,6 +394,10 @@ if (videoFile && videoFile.size > 0) {
                 );
 
 
+                // ==================================
+                // HTTP CHECK
+                // ==================================
+
                 if (!response.ok) {
 
                     throw new Error(
@@ -464,6 +407,10 @@ if (videoFile && videoFile.size > 0) {
 
                 }
 
+
+                // ==================================
+                // READ RESPONSE
+                // ==================================
 
                 const result =
                     await response.json();
@@ -522,57 +469,25 @@ if (videoFile && videoFile.size > 0) {
 
                 submitButton.disabled = false;
 
-                submitButton.innerHTML =
-                    originalText;
+
+                if (
+                    submitButton.tagName === "INPUT"
+                ) {
+
+                    submitButton.value =
+                        originalText;
+
+                } else {
+
+                    submitButton.innerHTML =
+                        originalText;
+
+                }
 
             }
 
         }
     );
-
-
-    // ==========================================
-    // FILE → BASE64
-    // ==========================================
-
-    function fileToDataURL(file) {
-
-        return new Promise(
-            function (resolve, reject) {
-
-                const reader =
-                    new FileReader();
-
-
-                reader.onload =
-                    function () {
-
-                        resolve(
-                            reader.result
-                        );
-
-                    };
-
-
-                reader.onerror =
-                    function () {
-
-                        reject(
-                            new Error(
-                                "Unable to read file: " +
-                                file.name
-                            )
-                        );
-
-                    };
-
-
-                reader.readAsDataURL(file);
-
-            }
-        );
-
-    }
 
 
     // ==========================================
